@@ -216,6 +216,10 @@ public class JvmOptions {
     }
 
     public void checkDebugConfiguration(Iterable<?> arguments) {
+        checkDebugConfiguration(debugOptions, arguments);
+    }
+
+    public static void checkDebugConfiguration(JavaDebugOptions debugOptions, Iterable<?> arguments) {
         List<String> debugArgs = collectDebugArgs(arguments);
         if (!debugArgs.isEmpty() && debugOptions.getEnabled().get()) {
             LOGGER.warn("Debug configuration ignored in favor of the supplied JVM arguments: " + debugArgs);
