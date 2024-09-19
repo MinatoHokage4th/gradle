@@ -376,10 +376,13 @@ public class JvmOptions {
         return debugOptions;
     }
 
-    public void copyFrom(JavaForkOptions source) {
+    public void copyFrom(JavaForkOptionsInternal source) {
         setAllJvmArgs(Collections.emptyList());
         jvmArgs(source.getJvmArgs());
         source.getJvmArgumentProviders().get().forEach(provider -> jvmArgs(provider.asArguments()));
+        if (source.getExtraJvmArgs() != null) {
+            setExtraJvmArgs(source.getExtraJvmArgs());
+        }
         systemProperties(source.getSystemProperties());
         minHeapSize = source.getMinHeapSize().getOrNull();
         maxHeapSize = source.getMaxHeapSize().getOrNull();

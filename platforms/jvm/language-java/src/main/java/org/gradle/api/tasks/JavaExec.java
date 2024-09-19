@@ -44,6 +44,7 @@ import org.gradle.process.ProcessForkOptions;
 import org.gradle.process.internal.DefaultJavaExecSpec;
 import org.gradle.process.internal.ExecActionFactory;
 import org.gradle.process.internal.JavaExecAction;
+import org.gradle.process.internal.JavaForkOptionsInternal;
 import org.gradle.work.DisableCachingByDefault;
 
 import javax.annotation.Nullable;

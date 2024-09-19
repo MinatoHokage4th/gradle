@@ -619,6 +619,11 @@ public abstract class DefaultExecActionFactory implements ExecFactory {
         }
 
         @Override
+        public Iterable<?> getExtraJvmArgs() {
+            return delegate.getExtraJvmArgs();
+        }
+
+        @Override
         public void checkDebugConfiguration(Iterable<?> arguments) {
             throw new UnsupportedOperationException();
         }
