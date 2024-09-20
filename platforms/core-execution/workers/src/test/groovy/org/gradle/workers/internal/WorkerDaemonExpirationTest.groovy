@@ -49,7 +49,7 @@ class WorkerDaemonExpirationTest extends Specification {
                 getJvmMemoryStatus() >> Mock(JvmMemoryStatus) {
                     getCommittedMemory() >> {
                         if (reportsMemoryUsage) {
-                            return MemoryAmount.of(forkOptions.javaForkOptions.maxHeapSize).bytes
+                            return MemoryAmount.of(forkOptions.jvmOptions.maxHeapSize).bytes
                         } else {
                             throw new IllegalStateException()
                         }
@@ -205,9 +205,9 @@ class WorkerDaemonExpirationTest extends Specification {
     private JavaForkOptions javaForkOptions(String minHeap, String maxHeap, List<String> jvmArgs) {
         def options = TestFiles.execFactory().newJavaForkOptions()
         options.workingDir = systemSpecificAbsolutePath("foo")
-        options.minHeapSize = minHeap
-        options.maxHeapSize = maxHeap
-        options.jvmArgs = jvmArgs
+        options.minHeapSize.set(minHeap)
+        options.maxHeapSize.set(maxHeap)
+        options.jvmArgs.set(jvmArgs)
         return options
     }
 

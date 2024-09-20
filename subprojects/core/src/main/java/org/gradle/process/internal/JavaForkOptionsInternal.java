@@ -36,4 +36,6 @@ public interface JavaForkOptionsInternal extends JavaForkOptions {
      * Checks supplied JVM arguments with purpose to ignore debug configuration in favor of the supplied arguments.
      */
     void checkDebugConfiguration(Iterable<?> arguments);
+
+    JvmForkOptions toEffectiveJvmForkOptions();
 }

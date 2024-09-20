@@ -408,4 +408,9 @@ public class JavaExecHandleBuilder extends AbstractExecHandleBuilder implements 
     public void checkDebugConfiguration(Iterable<?> arguments) {
         javaOptions.checkDebugConfiguration(arguments);
     }
+
+    @Override
+    public JvmForkOptions toEffectiveJvmForkOptions() {
+        return javaOptions.toEffectiveJvmForkOptions();
+    }
 }

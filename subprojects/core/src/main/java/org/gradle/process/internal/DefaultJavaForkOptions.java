@@ -250,6 +250,18 @@ public class DefaultJavaForkOptions extends DefaultProcessForkOptions implements
     }
 
     @Override
+    public JvmForkOptions toEffectiveJvmForkOptions() {
+        JvmOptions jvmOptions = new JvmOptions(fileCollectionFactory, objectFactory.newInstance(DefaultJavaDebugOptions.class, objectFactory));
+        jvmOptions.copyFrom(this);
+        return new JvmForkOptions(
+            getExecutable(),
+            getWorkingDir(),
+            getEnvironment(),
+            jvmOptions
+        );
+    }
+
+    @Override
     public void setExtraJvmArgs(Iterable<?> arguments) {
         this.extraJvmArgs = arguments;
     }
