@@ -32,9 +32,9 @@ class MinimalCompilerDaemonForkOptionsConverterTest extends Specification {
         def javaForkOptions = converter.transform(baseForkOptions)
 
         then:
-        javaForkOptions.minHeapSize == "128m"
-        javaForkOptions.maxHeapSize == "1g"
-        javaForkOptions.jvmArgs == ["-foo", "-bar"]
+        javaForkOptions.minHeapSize.getOrNull() == "128m"
+        javaForkOptions.maxHeapSize.getOrNull() == "1g"
+        javaForkOptions.jvmArgs.get() == ["-foo", "-bar"]
     }
 
     def "can convert a partially configured base fork options"() {
@@ -45,8 +45,8 @@ class MinimalCompilerDaemonForkOptionsConverterTest extends Specification {
         def javaForkOptions = converter.transform(baseForkOptions)
 
         then:
-        javaForkOptions.minHeapSize == "128m"
-        javaForkOptions.maxHeapSize == null
-        javaForkOptions.jvmArgs == []
+        javaForkOptions.minHeapSize.getOrNull() == "128m"
+        javaForkOptions.maxHeapSize.getOrNull() == null
+        javaForkOptions.jvmArgs.get() == []
     }
 }
