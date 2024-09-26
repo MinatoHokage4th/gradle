@@ -157,7 +157,7 @@ class DaemonForkOptionsTest extends Specification {
         javaForkOptions.workingDir = systemSpecificAbsolutePath("foo")
         javaForkOptions.minHeapSize.set("128m")
         javaForkOptions.maxHeapSize.set("1g")
-        javaForkOptions.jvmArgs.set(["-server", "-verbose:gc"])
+        javaForkOptions.jvmArgs = ["-server", "-verbose:gc"]
         def settings1 = daemonForkOptionsBuilder(javaForkOptions)
             .build()
         def settings2 = daemonForkOptionsBuilder(javaForkOptions)
@@ -172,12 +172,12 @@ class DaemonForkOptionsTest extends Specification {
         javaForkOptions1.workingDir = systemSpecificAbsolutePath("foo")
         javaForkOptions1.minHeapSize.set("128m")
         javaForkOptions1.maxHeapSize.set("1g")
-        javaForkOptions1.jvmArgs.set(["-server", "-verbose:gc"])
+        javaForkOptions1.jvmArgs = ["-server", "-verbose:gc"]
         def javaForkOptions2 = TestFiles.execFactory().newJavaForkOptions()
         javaForkOptions2.workingDir = systemSpecificAbsolutePath("foo")
         javaForkOptions2.minHeapSize.set("256m")
         javaForkOptions2.maxHeapSize.set("1g")
-        javaForkOptions2.jvmArgs.set(["-server", "-verbose:gc"])
+        javaForkOptions2.jvmArgs = ["-server", "-verbose:gc"]
         def settings1 = daemonForkOptionsBuilder(javaForkOptions1)
             .build()
         def settings2 = daemonForkOptionsBuilder(javaForkOptions2)

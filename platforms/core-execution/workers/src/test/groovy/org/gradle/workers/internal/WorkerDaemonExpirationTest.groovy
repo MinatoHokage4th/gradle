@@ -207,7 +207,7 @@ class WorkerDaemonExpirationTest extends Specification {
         options.workingDir = systemSpecificAbsolutePath("foo")
         options.minHeapSize.set(minHeap)
         options.maxHeapSize.set(maxHeap)
-        options.jvmArgs.set(jvmArgs)
+        options.jvmArgs = jvmArgs
         return options
     }
 
