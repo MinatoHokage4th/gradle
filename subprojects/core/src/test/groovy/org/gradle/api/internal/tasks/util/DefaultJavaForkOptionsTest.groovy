@@ -53,7 +53,7 @@ class DefaultJavaForkOptionsTest extends Specification {
         options.minHeapSize.getOrNull() == null
         options.maxHeapSize.getOrNull() == null
         options.bootstrapClasspath.files.isEmpty()
-        !options.enableAssertions.get()
+        options.enableAssertions.getOrNull() == null
         !options.debug.get()
         options.allJvmArgs.get() == [fileEncodingProperty(), *localeProperties()]
     }

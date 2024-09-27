@@ -68,10 +68,8 @@ public class DefaultJavaForkOptions extends DefaultProcessForkOptions implements
         this.minHeapSize = objectFactory.property(String.class);
         this.maxHeapSize = objectFactory.property(String.class);
         this.debugOptions = debugOptions;
-        JvmOptions emptyJvmOptions = new JvmOptions(fileCollectionFactory, objectFactory.newInstance(DefaultJavaDebugOptions.class, objectFactory));
         this.defaultCharacterEncoding = objectFactory.property(String.class);
-        this.enableAssertions = objectFactory.property(Boolean.class).convention(emptyJvmOptions.getEnableAssertions());
-        this.debugOptions.getEnabled().convention(emptyJvmOptions.getDebug());
+        this.enableAssertions = objectFactory.property(Boolean.class);
     }
 
     @Override
@@ -232,7 +230,7 @@ public class DefaultJavaForkOptions extends DefaultProcessForkOptions implements
             throw new UnsupportedOperationException("Cannot compare options with jvmArgumentProviders.");
         }
         return Objects.equals(getDebug().get(), options.getDebug().get())
-            && Objects.equals(getEnableAssertions().get(), options.getEnableAssertions().get())
+            && Objects.equals(getEnableAssertions().getOrNull(), options.getEnableAssertions().getOrNull())
             && normalized(getExecutable()).equals(normalized(options.getExecutable()))
             && getWorkingDir().equals(options.getWorkingDir())
             && normalized(getDefaultCharacterEncoding().getOrNull()).equals(normalized(options.getDefaultCharacterEncoding().getOrNull()))

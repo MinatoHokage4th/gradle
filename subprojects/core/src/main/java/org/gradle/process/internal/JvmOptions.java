@@ -388,13 +388,18 @@ public class JvmOptions {
             setExtraJvmArgs(source.getExtraJvmArgs());
         }
         systemProperties(source.getSystemProperties());
-        minHeapSize = source.getMinHeapSize().getOrNull();
-        maxHeapSize = source.getMaxHeapSize().getOrNull();
+        if (source.getMinHeapSize().isPresent()) {
+            setMinHeapSize(source.getMinHeapSize().get());
+        }
+        if (source.getMaxHeapSize().isPresent()) {
+            setMaxHeapSize(source.getMaxHeapSize().get());
+        }
+        if (source.getEnableAssertions().isPresent()) {
+            setEnableAssertions(source.getEnableAssertions().get());
+        }
         bootstrapClasspath = source.getBootstrapClasspath();
-        assertionsEnabled = source.getEnableAssertions().get();
-        String defaultEncoding = source.getDefaultCharacterEncoding().getOrNull();
-        if (defaultEncoding != null) {
-            setDefaultCharacterEncoding(defaultEncoding);
+        if (source.getDefaultCharacterEncoding().isPresent()) {
+            setDefaultCharacterEncoding(source.getDefaultCharacterEncoding().get());
         }
         copyDebugOptionsFrom(source.getDebugOptions());
     }

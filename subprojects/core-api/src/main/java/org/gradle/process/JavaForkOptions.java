@@ -192,6 +192,7 @@ public interface JavaForkOptions extends ProcessForkOptions {
      * A flag that marks if assertions are enabled for the process.
      */
     @Input
+    @Optional
     @ReplacesEagerProperty(replacedAccessors = {
         @ReplacedAccessor(value = AccessorType.GETTER, name = "getEnableAssertions", originalType = boolean.class),
         @ReplacedAccessor(value = AccessorType.SETTER, name = "setEnableAssertions", originalType = boolean.class)

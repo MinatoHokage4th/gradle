@@ -196,7 +196,7 @@ public abstract class Test extends AbstractTestTask implements JavaForkOptions, 
             }
         });
         forkOptions = getForkOptionsFactory().newDecoratedJavaForkOptions();
-        forkOptions.getEnableAssertions().convention(true);
+        forkOptions.getEnableAssertions().set(true);
         forkOptions.setExecutable(null);
         modularity = objectFactory.newInstance(DefaultModularitySpec.class);
         javaLauncher = objectFactory.property(JavaLauncher.class).convention(createJavaLauncherConvention());
