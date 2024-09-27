@@ -1,0 +1,28 @@
+{
+    "acceptedApiChanges": [
+        {
+            "type": "org.gradle.api.tasks.scala.ScalaDoc",
+            "member": "Method org.gradle.api.tasks.scala.ScalaDoc.scalaDocOptions(org.gradle.api.Action)",
+            "acceptation": "Removed on master, temporary accept",
+            "changes": [
+                "Method has been removed"
+            ]
+        },
+        {
+            "type": "org.gradle.language.scala.tasks.BaseScalaCompileOptions",
+            "member": "Method org.gradle.language.scala.tasks.BaseScalaCompileOptions.forkOptions(org.gradle.api.Action)",
+            "acceptation": "Removed on master, temporary accept",
+            "changes": [
+                "Method has been removed"
+            ]
+        },
+        {
+            "type": "org.gradle.language.scala.tasks.BaseScalaCompileOptions",
+            "member": "Method org.gradle.language.scala.tasks.BaseScalaCompileOptions.incrementalOptions(org.gradle.api.Action)",
+            "acceptation": "Removed on master, temporary accept",
+            "changes": [
+                "Method has been removed"
+            ]
+        }
+    ]
+}
